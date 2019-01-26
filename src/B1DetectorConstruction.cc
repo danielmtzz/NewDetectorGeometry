@@ -146,6 +146,16 @@ G4double air2_zpos = 168.29*mm + air2_total_length/2;
 G4double air2_inner_r = 247.65*mm;
 G4double air2_outer_r = 508.0/2*mm;
 
+G4double air3_total_length = 2146.4*mm;
+G4double air3_inner_r = 1216.54/2*mm;
+G4double air3_outer_r = 1200.0*mm;
+G4double air3_zpos = 1192.9*mm - air3_total_length/2;
+
+G4double air4_total_length = 348.49*mm;
+G4double air4_zpos = 622.26*mm + air4_total_length/2;
+G4double air4_inner_r = 60.0*mm;
+G4double air4_outer_r = 508.0/2*mm;
+
 
 
 
@@ -695,7 +705,19 @@ auto logicAir2 = new G4LogicalVolume(solidAir2, air, "air2");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,air2_zpos), logicAir2, "air2", logicWorld, false, 0, true);
 logicAir2->SetVisAttributes(invisibleattr);
 
-// *three more air volumes missing for slat detector
+// air3 (scintillator mother volume)
+auto solidAir3 = new G4Tubs("air3", air3_inner_r, air3_outer_r, air3_total_length/2, 0, 2*pi);
+auto logicAir3 = new G4LogicalVolume(solidAir3, air, "air3");
+new G4PVPlacement(nullptr, G4ThreeVector(0,0,air3_zpos), logicAir3, "air3", logicWorld, false, 0, true);
+logicAir3->SetVisAttributes(invisibleattr);
+
+// air4
+auto solidAir4 = new G4Tubs("air4", air4_inner_r, air4_outer_r, air4_total_length/2, 0, 2*pi);
+auto logicAir4 = new G4LogicalVolume(solidAir4, air, "air4");
+new G4PVPlacement(nullptr, G4ThreeVector(0,0,-air4_zpos), logicAir4, "air4", logicWorld, false, 0, true);
+logicAir4->SetVisAttributes(invisibleattr);
+
+
 
 
 
