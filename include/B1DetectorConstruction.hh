@@ -39,6 +39,7 @@ class B1DetectorConstruction : public G4VUserDetectorConstruction
 
     G4VisAttributes* FR4_vis_;
     G4VisAttributes* coppervisattr;
+    G4VisAttributes* airvisattr;
     G4VisAttributes* invisibleattr;
     G4VisAttributes* stainlessvisattr;
     G4VisAttributes* goldvisattr;
@@ -49,6 +50,7 @@ class B1DetectorConstruction : public G4VUserDetectorConstruction
 
 
     G4Material* LHe;
+    G4Material* air;
     G4Material* copper;
     G4Material* stainless;
     G4Material* vacuum;

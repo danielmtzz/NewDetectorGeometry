@@ -136,6 +136,16 @@ G4double degrader_zpos = 547.21*mm + degrader_total_length/2;
 G4double degrader_inner_r = 0.0*mm;
 G4double degrader_outer_r = 23.5*mm;
 
+G4double air1_total_length = 790.55*mm;
+G4double air1_zpos = 168.29*mm - air1_total_length/2;
+G4double air1_inner_r = 381.0/2*mm;
+G4double air1_outer_r = 508.0/2*mm;
+
+G4double air2_total_length = 1113.9*mm;
+G4double air2_zpos = 168.29*mm + air2_total_length/2;
+G4double air2_inner_r = 247.65*mm;
+G4double air2_outer_r = 508.0/2*mm;
+
 
 
 
@@ -267,6 +277,10 @@ void B1DetectorConstruction::SetupMaterials()
   gold = nist->FindOrBuildMaterial("G4_Au");
   G4Color goldcolour(255/255.,255/255.,0/255.,1.0);
   goldvisattr = new G4VisAttributes(goldcolour);
+
+  air = nist->FindOrBuildMaterial("G4_AIR");
+  G4Color aircolour(255/255.,165.0/255.,0/255.,1.0);
+  airvisattr = new G4VisAttributes(aircolour);
 
 
   Ti = nist->FindOrBuildMaterial("G4_Ti");
@@ -544,81 +558,81 @@ logicTiEnclosure3->SetVisAttributes(Tivisattr);
 
 // Lower tube 1
 auto solidLower1 = new G4Tubs("Lower1", Lower1_inner_r, Lower1_outer_r, Lower1_total_length/2, 0, 2*pi);
-auto logicLower1 = new G4LogicalVolume(solidLower1, Al, "Lower1");
+auto logicLower1 = new G4LogicalVolume(solidLower1, stainless, "Lower1");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,-Lower1_zpos), logicLower1, "Lower1", logicWorld, false, 0, true);
-logicLower1->SetVisAttributes(Alvisattr);
+logicLower1->SetVisAttributes(stainlessvisattr);
 
 
 // Lower tube 2
 auto solidLower2 = new G4Tubs("Lower2", Lower2_inner_r, Lower2_outer_r, Lower2_total_length/2, 0, 2*pi);
-auto logicLower2 = new G4LogicalVolume(solidLower2, Al, "Lower2");
+auto logicLower2 = new G4LogicalVolume(solidLower2, stainless, "Lower2");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,-Lower2_zpos), logicLower2, "Lower2", logicWorld, false, 0, true);
-logicLower2->SetVisAttributes(Alvisattr);
+logicLower2->SetVisAttributes(stainlessvisattr);
 
 
 // Lower tube 3
 auto solidLower3 = new G4Tubs("Lower3", Lower3_inner_r, Lower3_outer_r, Lower3_total_length/2, 0, 2*pi);
-auto logicLower3 = new G4LogicalVolume(solidLower3, Al, "Lower3");
+auto logicLower3 = new G4LogicalVolume(solidLower3, stainless, "Lower3");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,-Lower3_zpos), logicLower3, "Lower3", logicWorld, false, 0, true);
-logicLower3->SetVisAttributes(Alvisattr);
+logicLower3->SetVisAttributes(stainlessvisattr);
 
 
 // Lower tube 4
 auto solidLower4 = new G4Tubs("Lower4", Lower4_inner_r, Lower4_outer_r, Lower4_total_length/2, 0, 2*pi);
-auto logicLower4 = new G4LogicalVolume(solidLower4, Al, "Lower4");
+auto logicLower4 = new G4LogicalVolume(solidLower4, stainless, "Lower4");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,-Lower4_zpos), logicLower4, "Lower4", logicWorld, false, 0, true);
-logicLower4->SetVisAttributes(Alvisattr);
+logicLower4->SetVisAttributes(stainlessvisattr);
 
 
 
 
 // Bottom base
 auto solidBottombase = new G4Tubs("Bottombase", Bottombase_inner_r, Bottombase_outer_r, Bottombase_total_length/2, 0, 2*pi);
-auto logicBottombase = new G4LogicalVolume(solidBottombase, Al, "Bottombase");
+auto logicBottombase = new G4LogicalVolume(solidBottombase, stainless, "Bottombase");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,-Bottombase_zpos), logicBottombase, "Bottombase", logicWorld, false, 0, true);
-logicBottombase->SetVisAttributes(Alvisattr);
+logicBottombase->SetVisAttributes(stainlessvisattr);
 
 
 // Upper base
 auto solidUpperbase = new G4Tubs("Upperbase", Upperbase_inner_r, Upperbase_outer_r, Upperbase_total_length/2, 0, 2*pi);
-auto logicUpperbase = new G4LogicalVolume(solidUpperbase, Al, "Upperbase");
+auto logicUpperbase = new G4LogicalVolume(solidUpperbase, stainless, "Upperbase");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,Upperbase_zpos), logicUpperbase, "Upperbase", logicWorld, false, 0, true);
-logicUpperbase->SetVisAttributes(Alvisattr);
+logicUpperbase->SetVisAttributes(stainlessvisattr);
 
 // Upper base2
 auto solidUpperbase2 = new G4Tubs("Upperbase2", Upperbase2_inner_r, Upperbase2_outer_r, Upperbase2_total_length/2, 0, 2*pi);
-auto logicUpperbase2 = new G4LogicalVolume(solidUpperbase2, Al, "Upperbase2");
+auto logicUpperbase2 = new G4LogicalVolume(solidUpperbase2, stainless, "Upperbase2");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,Upperbase2_zpos), logicUpperbase2, "Upperbase2", logicWorld, false, 0, true);
-logicUpperbase2->SetVisAttributes(Alvisattr);
+logicUpperbase2->SetVisAttributes(stainlessvisattr);
 
 
 
 // Upper tube 1
 auto solidUpper1 = new G4Tubs("Upper1", Upper1_inner_r, Upper1_outer_r, Upper1_total_length/2, 0, 2*pi);
-auto logicUpper1 = new G4LogicalVolume(solidUpper1, Al, "Upper1");
+auto logicUpper1 = new G4LogicalVolume(solidUpper1, stainless, "Upper1");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,Upper1_zpos), logicUpper1, "Upper1", logicWorld, false, 0, true);
-logicUpper1->SetVisAttributes(Alvisattr);
+logicUpper1->SetVisAttributes(stainlessvisattr);
 
 
 // Upper tube 2
 auto solidUpper2 = new G4Tubs("Upper2", Upper2_inner_r, Upper2_outer_r, Upper2_total_length/2, 0, 2*pi);
-auto logicUpper2 = new G4LogicalVolume(solidUpper2, Al, "Upper2");
+auto logicUpper2 = new G4LogicalVolume(solidUpper2, stainless, "Upper2");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,Upper2_zpos), logicUpper2, "Upper2", logicWorld, false, 0, true);
-logicUpper2->SetVisAttributes(Alvisattr);
+logicUpper2->SetVisAttributes(stainlessvisattr);
 
 
 // Upper tube 3
 auto solidUpper3 = new G4Tubs("Upper3", Upper3_inner_r, Upper3_outer_r, Upper3_total_length/2, 0, 2*pi);
-auto logicUpper3 = new G4LogicalVolume(solidUpper3, Al, "Upper3");
+auto logicUpper3 = new G4LogicalVolume(solidUpper3, stainless, "Upper3");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,Upper3_zpos), logicUpper3, "Upper3", logicWorld, false, 0, true);
-logicUpper3->SetVisAttributes(Alvisattr);
+logicUpper3->SetVisAttributes(stainlessvisattr);
 
 
 // Upper tube 4
 auto solidUpper4 = new G4Tubs("Upper4", Upper4_inner_r, Upper4_outer_r, Upper4_total_length/2, 0, 2*pi);
-auto logicUpper4 = new G4LogicalVolume(solidUpper4, Al, "Upper4");
+auto logicUpper4 = new G4LogicalVolume(solidUpper4, stainless, "Upper4");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,Upper4_zpos), logicUpper4, "Upper4", logicWorld, false, 0, true);
-logicUpper4->SetVisAttributes(Alvisattr);
+logicUpper4->SetVisAttributes(stainlessvisattr);
 
 
 
@@ -637,30 +651,51 @@ logicSolenoid->SetVisAttributes(coppervisattr);
 
 // innerTube
 auto solidinnerTube = new G4Tubs("innerTube", innerTube_inner_r, innerTube_outer_r, innerTube_total_length/2, 0, 2*pi);
-auto logicinnerTube = new G4LogicalVolume(solidinnerTube, Al, "innerTube");
+auto logicinnerTube = new G4LogicalVolume(solidinnerTube, stainless, "innerTube");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,innerTube_zpos), logicinnerTube, "innerTube", logicWorld, false, 0, true);
-logicinnerTube->SetVisAttributes(Alvisattr);
+logicinnerTube->SetVisAttributes(stainlessvisattr);
 
 
 // outerTube
 auto solidouterTube = new G4Tubs("outerTube", outerTube_inner_r, outerTube_outer_r, outerTube_total_length/2, 0, 2*pi);
-auto logicouterTube = new G4LogicalVolume(solidouterTube, Al, "outerTube");
+auto logicouterTube = new G4LogicalVolume(solidouterTube, stainless, "outerTube");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,outerTube_zpos), logicouterTube, "outerTube", logicWorld, false, 0, true);
-logicouterTube->SetVisAttributes(Alvisattr);
+logicouterTube->SetVisAttributes(stainlessvisattr);
 
 
 // lowerBase
 auto solidlowerBase = new G4Tubs("lowerBase", lowerBase_inner_r, lowerBase_outer_r, lowerBase_total_length/2, 0, 2*pi);
-auto logiclowerBase = new G4LogicalVolume(solidlowerBase, Al, "lowerBase");
+auto logiclowerBase = new G4LogicalVolume(solidlowerBase, stainless, "lowerBase");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,-lowerBase_zpos), logiclowerBase, "lowerBase", logicWorld, false, 0, true);
-logiclowerBase->SetVisAttributes(Alvisattr);
+logiclowerBase->SetVisAttributes(stainlessvisattr);
 
 
 // upperBase
 auto solidupperBase = new G4Tubs("upperBase", upperBase_inner_r, upperBase_outer_r, upperBase_total_length/2, 0, 2*pi);
-auto logicupperBase = new G4LogicalVolume(solidupperBase, Al, "upperBase");
+auto logicupperBase = new G4LogicalVolume(solidupperBase, stainless, "upperBase");
 new G4PVPlacement(nullptr, G4ThreeVector(0,0,upperBase_zpos), logicupperBase, "upperBase", logicWorld, false, 0, true);
-logicupperBase->SetVisAttributes(Alvisattr);
+logicupperBase->SetVisAttributes(stainlessvisattr);
+
+
+// ################################################
+//           Air volume (where detectors go)
+// ################################################
+
+
+// air1 (silicon detector mother volume)
+auto solidAir1 = new G4Tubs("air1", air1_inner_r, air1_outer_r, air1_total_length/2, 0, 2*pi);
+auto logicAir1 = new G4LogicalVolume(solidAir1, air, "air1");
+new G4PVPlacement(nullptr, G4ThreeVector(0,0,air1_zpos), logicAir1, "air1", logicWorld, false, 0, true);
+logicAir1->SetVisAttributes(invisibleattr);
+
+
+// air2
+auto solidAir2 = new G4Tubs("air2", air2_inner_r, air2_outer_r, air2_total_length/2, 0, 2*pi);
+auto logicAir2 = new G4LogicalVolume(solidAir2, air, "air2");
+new G4PVPlacement(nullptr, G4ThreeVector(0,0,air2_zpos), logicAir2, "air2", logicWorld, false, 0, true);
+logicAir2->SetVisAttributes(invisibleattr);
+
+// *three more air volumes missing for slat detector
 
 
 
