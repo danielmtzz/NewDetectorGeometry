@@ -329,7 +329,7 @@ void B1DetectorConstruction::SetupMaterials()
   FR4_ = new G4Material("FR4", 1.86 * g / cm3, 2);
   FR4_->AddMaterial(SiO2, 0.528);
   FR4_->AddMaterial(Epoxy, 0.472);
-
+  //materialMap["fr4"] = FR4;
 
 }
 
@@ -688,7 +688,7 @@ logicupperBase->SetVisAttributes(stainlessvisattr);
 
 
 // ################################################
-//           Air volume (where detectors go)
+//           Air volumes (where detectors go)
 // ################################################
 
 

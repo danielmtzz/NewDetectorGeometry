@@ -61,6 +61,8 @@ class B1DetectorConstruction : public G4VUserDetectorConstruction
 	G4Material* SiO2;
     G4Material* Epoxy;
     G4Material* FR4_;
+
+    //std::map<G4String, G4Material*> mateirlaMap;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
